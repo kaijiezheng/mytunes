@@ -3,6 +3,7 @@
   <body>
     <!-- Scripts may be placed anywhere on a page. But FYI, they block rendering of elements
      below them until after the scripts load-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
@@ -21,6 +22,7 @@
     <script src="views/SongQueueEntryView.js"></script>
     <script src="views/AppView.js"></script>
 
+    <canvas></canvas>
     <script>
       $(function() {
         // set up model objects
@@ -29,8 +31,6 @@
 
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
-
-        // var queueView = new SongQueueView({model: app});
 
         // put the view onto the screen
         $('body').append(appView.render());
