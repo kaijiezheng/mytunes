@@ -9,6 +9,10 @@ var SongQueueEntryView = Backbone.View.extend({
   },
 
   render: function(){
+    this.$el.attr('class', 'queueEntries');
+    if(this.model.get('playing')){
+      this.$el.attr('class', 'playing queueEntries');
+    }
     return this.$el.html(this.template(this.model.attributes));
   },
 
