@@ -12,7 +12,6 @@ var LibraryEntryView = Backbone.View.extend({
 
   handleClick: function(){
     // enqueue all songs, allow song model and song queue to control playing
-    console.log('handling');
     this.model.enqueue();
   },
 

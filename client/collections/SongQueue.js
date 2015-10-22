@@ -7,23 +7,25 @@ var SongQueue = Songs.extend({
       if (this.models.length === 1){
         this.playFirst();
       }
-      this.trigger('newSongInQueue');
+      this.trigger('songChange');
     });
 
     this.on('ended', function(){
-      this.remove(this.models[0]);
-      if (this.models.length > 0) {
-        this.playFirst();
-      }
+      this.removeSong();
+      this.trigger('songChange');
     });
 
     this.on('dequeue', function(song){
-      console.log(song);
       this.remove(song);
-      // if (this.models.length > 0) {
-      //   this.playFirst();
-      // }
+      this.trigger('songChange');
     });
+  },
+
+  removeSong: function(){
+    this.remove(this.models[0]);
+    if (this.models.length > 0) {
+      this.playFirst();
+    }
   },
 
   playFirst: function() {

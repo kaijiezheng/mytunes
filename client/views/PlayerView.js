@@ -10,6 +10,14 @@ var PlayerView = Backbone.View.extend({
 
   setSong: function(song) {
     this.model = song;
+    var myContext = this;
+    this.model.on('dequeue', function(){
+      console.log("my song is gone!");
+      myContext.$el.trigger('ended');
+      console.log(myContext.$el);
+      myContext.$el[0].pause();
+      myContext.$el.removeAttr('src');
+    });
     this.render();
   },
 
